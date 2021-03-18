@@ -3,21 +3,21 @@ package three;
 import java.util.Scanner;
 
 /*
- * 첫째 줄에는 별 1개, 둘째 줄에는 별 2개, N번째 줄에는 별 N개를 찍는 문제
+ * 두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오.
  */
 public class Step3_8 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		int N = scan.nextInt();
-		
-		for(int i = 1; i <= N; i++) {
-			for(int j = 0; j < i; j++) {
-				System.out.print("*");
-			}
-			System.out.println();
-		}
 
+		int N = scan.nextInt();
+		int a, b;
+		
+		for(int i = 1 ; i <= N; i++) {
+			a = scan.nextInt();
+			b = scan.nextInt();
+			System.out.println("Case #" + i + ": " + a + " + " + b + " = " + (a+b));
+		}
 	}
 
 }
