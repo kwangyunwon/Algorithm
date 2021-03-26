@@ -8,38 +8,40 @@ import java.util.ArrayList;
 class FunctionDevelopment {
     public int[] solution(int[] progresses, int[] speeds) {
        
-		int[] date = new int[progresses.length];
-		
+		int[] day = new int[progresses.length];
 		ArrayList<Integer> list = new ArrayList<Integer>();
+		int count;
 		
-		int count = 0;
-		
+		// 기능개발의 진도가 100%가 되는데 며칠이 걸리는지 구해서 day안에 넣는다.
 		for(int i = 0; i < progresses.length; i++) {
 			for(int j = progresses[i]; j < 100; j += speeds[i]) {
-				date[i]++;
+				day[i]++;
 			}
 		}
 		
-		
-		for(int i = 0; i < date.length; i++) {
+		// 배포의 순서와 날짜를 계산하여 list에 추가한다.
+		for(int i = 0; i < day.length; i++) {
 			count = 1;
-            
-			  if(date[i] != -1) {
-	                int temp = date[i];          
-	                date[i] = -1;
-	                
-	                for(int l = i + 1; l < date.length; l++) {
-	    				if(temp >= date[l]) {
-	    					count++;
-	    					date[l] = -1;
-	    				}
-	    				else {
-	    					break;
-	    				}
+			
+			// 이전에 검사를 했는지 확인. 했으면 -1로 지정하여 넘어가도록 함
+            if(day[i] != -1) {
+            	int temp = day[i];          
+	            day[i] = -1;
+	            
+	            // 배포에 걸리는 일수를 확인하여 몇개의 기능을 배포할 수 있는지 count로 계산
+	            for(int j = i + 1; j < day.length; j++) {
+	            	
+	            	if(temp >= day[j]) {
+	    				count++;
+	    				day[j] = -1;
 	    			}
+	    			else {
+	    				break;
+	    			}
+	    		}
 	                
-	                list.add(count);
-			  }
+	            list.add(count);
+            }
 		}
 		
 		int[] answer = new int[list.size()];
