@@ -36,7 +36,7 @@ public class DFSandBFS {
 		System.out.println();
 		reset();
 		BFS(V);
-		
+		br.close();
 		
 	}
 	
