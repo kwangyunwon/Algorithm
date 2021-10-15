@@ -13,27 +13,21 @@ public class test7 {
 		int N = Integer.parseInt(br.readLine());
 		
 		int[] array = new int[N];
-		int[] array2 = new int[N];
 		
+		int cnt = 0;
 		int sum = 0;
 		
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		
 		for(int i = 0; i < N; i++) {
-			array[i] = array2[i] = Integer.parseInt(st.nextToken());
-		}
-		
-		for(int i = 0; i < N; i++) {
+			array[i] = Integer.parseInt(st.nextToken());
 			if(array[i] == 1) {
-				if(i == array.length - 1) {
-					sum+= array2[i];
-					break;
-				}
-				if(array[i] == array[i + 1]) {
-					array2[i + 1] = array2[i] + 1;
-				}
+				cnt++;
+				sum += cnt;
 			}
-			sum += array2[i];
+			else {
+				cnt = 0;
+			}
 		}
 		
 		System.out.println(sum);
